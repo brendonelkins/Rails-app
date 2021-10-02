@@ -1,0 +1,24 @@
+<div class="card" style="width: 24rem;">
+  <div class="card-body">
+    <u><h5 class="card-title">Ingredient info</h5></u>
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Ingredient name:</strong>
+      <%= @ingredient.ingredient_name %>
+    </p>
+
+    <p>
+      <strong>Amount:</strong>
+      <%= @ingredient.amount %>
+    </p>
+
+    <p>
+      <strong>Unit:</strong>
+      <%= @ingredient.unit %>
+    </p>
+
+    <%= link_to 'Edit', edit_ingredient_path(@ingredient, recipe_id: @ingredient.recipe_id), class: 'btn btn-outline-dark' %> |
+    <%= link_to 'Back', recipe_path(@ingredient.recipe_id), class: 'btn btn-outline-dark' %>
+  </div>
+</div>

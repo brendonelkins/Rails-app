@@ -1,0 +1,32 @@
+<br>
+<h1><%= @author.first_name %>'s Recipes</h1>
+
+<table class='table'>
+  <thead class="table-light">
+    <tr>
+      <th>Recipe name</th>
+      <th>Difficulty</th>
+      <th>Comments</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <% if recipe.author_id == @author.id %>
+        <tr>
+          <td><%= recipe.recipe_name %></td>
+          <td><%= recipe.difficulty %></td>
+          <td><%= recipe.comment %></td>
+          <td><%= link_to 'Show', recipe, class: 'btn btn-outline-dark' %></td>
+          <td><%= link_to 'Edit', edit_recipe_path(recipe, author_id: recipe.author_id), class: 'btn btn-outline-dark' %></td>
+          <td><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-dark' %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add recipe', new_recipe_path(author_id: @author.id), class: 'btn btn-outline-dark' %>

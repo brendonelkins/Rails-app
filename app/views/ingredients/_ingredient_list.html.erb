@@ -1,0 +1,33 @@
+<br>
+
+<h1>Ingredients</h1>
+
+<table class='table'>
+  <thead class="table-light">
+    <tr>
+      <th>Ingredient name</th>
+      <th>Amount</th>
+      <th>Unit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredients.each do |ingredient| %>
+      <% if ingredient.recipe_id == @recipe.id %>
+        <tr>
+          <td><%= ingredient.ingredient_name %></td>
+          <td><%= ingredient.amount %></td>
+          <td><%= ingredient.unit %></td>
+          <td><%= link_to 'Show', ingredient, class: 'btn btn-outline-dark' %></td>
+          <td><%= link_to 'Edit', edit_ingredient_path(ingredient, recipe_id: ingredient.recipe_id), class: 'btn btn-outline-dark' %></td>
+          <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-dark' %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add ingredient', new_ingredient_path(recipe_id: @recipe.id), class: 'btn btn-outline-dark' %>

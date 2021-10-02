@@ -1,0 +1,6 @@
+<h1>Editing Recipe</h1>
+
+<%= render 'form', recipe: @recipe %>
+<br>
+<%= link_to 'Show', @recipe, class: 'btn btn-outline-dark' %> |
+<%= link_to 'Back', author_path(@recipe.author_id), class: 'btn btn-outline-dark' %>

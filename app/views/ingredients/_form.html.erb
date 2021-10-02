@@ -1,0 +1,35 @@
+<%= form_with(model: ingredient) do |form| %>
+  <% if ingredient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+        <% ingredient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ingredient_name, class: 'form-label' %>
+    <%= form.text_field :ingredient_name, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :amount, class: 'form-label' %>
+    <%= form.number_field :amount, class: 'form-control', step: 0.1 %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :unit, class: 'form-label' %>
+    <%= form.select :unit, options_for_select([["Select One", ""], "Grams", "Milliliters", "Pieces"]), {}, { class: "form form-group form-control" } %>
+  </div>
+
+  <%= form.text_field :recipe_id, class: 'form-control', value: params[:recipe_id], type: :hidden %>
+
+  <br>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-outline-dark' %>
+  </div>
+<% end %>

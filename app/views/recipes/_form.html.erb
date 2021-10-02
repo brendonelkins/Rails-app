@@ -1,0 +1,42 @@
+<%= form_with(model: recipe) do |form| %>
+  <% if recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :recipe_name, class: 'form-label' %>
+    <%= form.text_field :recipe_name, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :comments, class: 'form-label' %>
+    <%= form.text_area :comment, class: 'form-control' %>
+  </div>
+  <br>
+  <%= form.label :difficulty, class: 'form-label' %>
+  <%= form.select :difficulty, options_for_select([["Select One", ""], "Easy", "Intermediate", "Pro", "Chef"]), {}, { class: "form form-group form-control" } %>
+
+  <br>
+
+  <div class="field">
+    <%= form.label 'Author name:', class: 'form-label' %>
+    <%= @author.first_name %> <%= @author.last_name %>
+  </div>
+
+  
+  <%= form.text_field :author_id, class: 'form-control', value: params[:author_id], type: :hidden %>
+
+  
+  <br>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-outline-dark' %>
+  </div>
+<% end %>

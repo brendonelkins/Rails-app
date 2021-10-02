@@ -1,0 +1,34 @@
+<div class="card" style="width: 24rem;">
+  <div class="card-body">
+    <u><h5 class="card-title">Recipe info</h5></u>
+    <p>
+      <strong>Recipe name:</strong>
+      <%= @recipe.recipe_name %>
+    </p>
+
+    <p>
+      <strong>Difficulty:</strong>
+      <%= @recipe.difficulty %>
+    </p>
+
+    <p>
+      <strong>Author:</strong>
+      <%= @author.first_name %> <%= @author.last_name %>
+    </p>
+
+    <p>
+      <strong>Comments:</strong>
+      <%= @recipe.comment %>
+    </p>
+
+    <%= link_to 'Edit', edit_recipe_path(@recipe, author_id: @recipe.author_id), class: 'btn btn-outline-dark' %> |
+    <%= link_to 'Back', author_path(@recipe.author_id), class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<%= render 'ingredients/ingredient_list' %>
+
+
+
+
+
